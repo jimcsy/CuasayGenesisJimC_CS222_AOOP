@@ -10,18 +10,20 @@ namespace MyProject{
             char secondChar = Console.ReadKey().KeyChar;
 
             Console.Write("\nEnter size: ");
-            int size = int.Parse(Console.ReadLine());
-
-            for (int x = 1; x <= size; x++){
-                for(int column = 1; column <= (x-1); column++){
-                    Console.Write("-");
+            if(int.TryParse(Console.ReadLine(), out int size) && size > 0){
+                for (int x = 1; x <= size; x++){
+                    for(int column = 1; column <= (x-1); column++){
+                        Console.Write("-");
+                    }
+                    if(x % 2== 0){
+                        Console.Write(secondChar);
+                    }else{
+                        Console.Write(firstChar);
+                    }
+                    Console.WriteLine();
                 }
-                if(x % 2== 0){
-                    Console.Write(secondChar);
-                }else{
-                    Console.Write(firstChar);
-                }
-                Console.WriteLine();
+            }else{
+                Console.WriteLine("Invalid input. Please enter a valid input.");
             }
         }
     }
